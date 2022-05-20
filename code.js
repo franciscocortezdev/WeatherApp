@@ -3,7 +3,7 @@ const container = document.querySelector('.containerWeather')
 const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 const URL = 'https://api.weatherapi.com/v1/forecast.json?key=3aae5333271e4a94bdf233013221805&days=3&q=';
 
-
+window.onload = getIP();
 
 function handleForm(event){
   event.preventDefault()
@@ -14,10 +14,19 @@ function handleForm(event){
 }
 
 
+
+async function getIP(){
+  const request = await fetch('https://api.ipify.org');
+  const json = await request.text();
+  getAPI(json)
+
+}
+
+
 async function getAPI(city){
   const request = await fetch(`${URL}${city}`);
   const json = await request.json();
-  console.log(json);
+  
   showData(json);
 }
 
@@ -26,7 +35,6 @@ const showData = (data) =>{
   const day2 = new Date(data.forecast.forecastday[1].date);
   const day3 = new Date(data.forecast.forecastday[2].date);
   container.innerHTML += `
- 
 
   <div class="content">
   <div class="head">
@@ -37,7 +45,7 @@ const showData = (data) =>{
       </div>
       <div class="temp">
           <picture>
-              <img src="http:${data.current.condition.icon}" >
+              <img src="https:${data.current.condition.icon}" >
           </picture>
           <div class="temp_data">
               <div class="degs">
@@ -77,7 +85,7 @@ const showData = (data) =>{
       <div class="day">
           <p>${days[day1.getDay()]}</p>
           <div class="day_temp">
-              <img src="http:${data.forecast.forecastday[0].day.condition.icon}" >
+              <img src="https:${data.forecast.forecastday[0].day.condition.icon}" >
               <p>${data.forecast.forecastday[0].day.condition.text}</p>
           </div>
           <div class="day_degs">
@@ -89,7 +97,7 @@ const showData = (data) =>{
       <div class="day">
           <p>${days[day2.getDay()]}</p>
           <div class="day_temp">
-              <img src="http:${data.forecast.forecastday[1].day.condition.icon}" >
+              <img src="https:${data.forecast.forecastday[1].day.condition.icon}" >
               <p>${data.forecast.forecastday[1].day.condition.text}</p>
           </div>
           <div class="day_degs">
@@ -101,7 +109,7 @@ const showData = (data) =>{
       <div class="day">
           <p>${days[day3.getDay()]}</p>
           <div class="day_temp">
-              <img src="http:${data.forecast.forecastday[2].day.condition.icon}" >
+              <img src="https:${data.forecast.forecastday[2].day.condition.icon}" >
               <p>${data.forecast.forecastday[2].day.condition.text}</p>
           </div>
           <div class="day_degs">

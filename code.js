@@ -8,8 +8,10 @@ window.onload = getIP();
 function handleForm(event){
   event.preventDefault()
   let city = document.querySelector('.search_city');
-  getAPI(city.value);
-  city.value = '';
+  if(!city.value == ''){
+    getAPI(city.value);
+    city.value = '';
+  }
   
 }
 
@@ -25,9 +27,15 @@ async function getIP(){
 
 async function getAPI(city){
   const request = await fetch(`${URL}${city}`);
+
+  if(request.status> 200 || request.status> 200){
+    const json = await request.json();
+  	return console.log(json.error.message);
+  }
+
   const json = await request.json();
-  
   showData(json);
+
 }
 
 const showData = (data) =>{

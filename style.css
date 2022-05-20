@@ -5,18 +5,24 @@
   box-sizing: border-box;
 }
 
+.container{
+  background-color: green;
+  width: 100%;
+  min-height: 100vh;
+  
+}
 .search{
   text-align: center;
-  margin: 40px;
 }
 .containerWeather{
   margin: 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 .content{
-  width: 400px;
+  width: 450px;
   background-color: #333;
   border-radius: 30px;
   padding: 10px;

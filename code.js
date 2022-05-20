@@ -37,14 +37,12 @@ const showData = (data) =>{
       </div>
       <div class="temp">
           <picture>
-              <span class="material-symbols-outlined">
-                  partly_cloudy_day
-              </span>
+              <img src="http:${data.current.condition.icon}" >
           </picture>
           <div class="temp_data">
               <div class="degs">
-                  <p>${data.current.temp_c}°</p>
-                  <p>/${data.current.temp_f}°</p>
+                  <p>${Math.round(data.current.temp_c)}°C</p>
+                  <p>/${Math.round(data.current.temp_f)}°F</p>
               </div>
               <div class="temp_description">
                   <p>${data.current.condition.text}</p>
@@ -54,21 +52,21 @@ const showData = (data) =>{
       <div class="today">
           <div class="breath">
               <span class="material-symbols-outlined">
-                  water_drop
+                filter_drama
               </span>
-              <p>${data.current.precip_mm}mm</p>
-              <p>Precip</p>
+              <p>${data.current.cloud}%</p>
+              <p>Cloud</p>
           </div>
           <div class="rain">
               <span class="material-symbols-outlined">
                   air
               </span>
-              <p>${data.current.wind_kph}Km/h</p>
+              <p>${Math.round(data.current.wind_kph)}Km/h</p>
               <p>Wind</p>
           </div>
           <div class="humidity">
               <span class="material-symbols-outlined">
-                  water
+                humidity_mid
                   </span>
               <p>${data.current.humidity}%</p>
               <p>humidity</p>
@@ -79,42 +77,36 @@ const showData = (data) =>{
       <div class="day">
           <p>${days[day1.getDay()]}</p>
           <div class="day_temp">
-              <span class="material-symbols-outlined">
-                  cloudy
-                  </span>
+              <img src="http:${data.forecast.forecastday[0].day.condition.icon}" >
               <p>${data.forecast.forecastday[0].day.condition.text}</p>
           </div>
           <div class="day_degs">
-              <span>${data.forecast.forecastday[0].day.maxtemp_c}°</span>
-              <span>${data.forecast.forecastday[0].day.mintemp_c}°</span>
+              <span>${Math.round(data.forecast.forecastday[0].day.maxtemp_c)}°C</span>
+              <span>${Math.round(data.forecast.forecastday[0].day.mintemp_c)}°F</span>
           </div>
           
       </div>
       <div class="day">
           <p>${days[day2.getDay()]}</p>
           <div class="day_temp">
-              <span class="material-symbols-outlined">
-                  ac_unit
-                  </span>
+              <img src="http:${data.forecast.forecastday[1].day.condition.icon}" >
               <p>${data.forecast.forecastday[1].day.condition.text}</p>
           </div>
           <div class="day_degs">
-              <span>${data.forecast.forecastday[1].day.maxtemp_c}°</span>
-              <span>${data.forecast.forecastday[1].day.mintemp_c}°</span>
+              <span>${Math.round(data.forecast.forecastday[1].day.maxtemp_c)}°C</span>
+              <span>${Math.round(data.forecast.forecastday[1].day.mintemp_c)}°F</span>
           </div>
           
       </div>
       <div class="day">
-          <p>${days[day2.getDay()]}</p>
+          <p>${days[day3.getDay()]}</p>
           <div class="day_temp">
-              <span class="material-symbols-outlined">
-                  thunderstorm
-                  </span>
+              <img src="http:${data.forecast.forecastday[2].day.condition.icon}" >
               <p>${data.forecast.forecastday[2].day.condition.text}</p>
           </div>
           <div class="day_degs">
-              <span>${data.forecast.forecastday[2].day.maxtemp_c}°</span>
-              <span>${data.forecast.forecastday[2].day.mintemp_c}°</span>
+              <span>${Math.round(data.forecast.forecastday[2].day.maxtemp_c)}°C</span>
+              <span>${Math.round(data.forecast.forecastday[2].day.mintemp_c)}°F</span>
           </div> 
         </div>
     </div>
